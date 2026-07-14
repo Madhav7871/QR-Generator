@@ -17,10 +17,6 @@
 }
 
 body {
-  background-color: var(--background);
-  background-image:
-    radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 0) 0, transparent 50%),
-    radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 0.03) 0, transparent 50%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -229,4 +225,41 @@ img {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* ==========================================================================
+   BACKGROUND VIDEO & GLASSMORPHISM UPGRADES
+   ========================================================================== */
+
+#bg-video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -2;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.video-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(248, 250, 252, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: -1;
+}
+
+.qr-card,
+.workflow-card {
+  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.92) !important;
+  box-shadow: 0 30px 60px -15px rgba(15, 23, 42, 0.08) !important;
 }
