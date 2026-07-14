@@ -21,34 +21,41 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 40px 20px;
+  padding: 20px;
+  overflow-x: hidden;
 }
 
+/* LANDSCAPE GRID CONTAINER */
 .app-container {
   width: 100%;
-  max-width: 450px;
+  max-width: 940px; /* Expanded for side-by-side view */
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  flex-direction: row; /* Forces Landscape Layout */
+  gap: 24px;
+  align-items: stretch; /* Makes both cards equal height */
+  justify-content: center;
 }
 
 .qr-card,
 .workflow-card {
-  background: var(--card-bg);
+  flex: 1; /* Forces equal split sizing */
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.04);
+  transition: transform 0.3s ease;
 }
 
 .qr-card {
   padding: 36px 30px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .logo-area {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .icon-shape {
@@ -71,7 +78,7 @@ h2 {
   font-size: 14px;
   color: var(--text-muted);
   line-height: 1.5;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 }
 
 .input-group {
@@ -117,19 +124,19 @@ button:hover {
 }
 
 .qr-box {
-  margin-top: 28px;
-  padding-top: 28px;
+  margin-top: 20px;
+  padding-top: 20px;
   border-top: 1px dashed var(--border);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 14px;
   animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .qr-wrapper {
   background: #f8fafc;
-  padding: 16px;
+  padding: 12px;
   border-radius: 12px;
   border: 1px solid var(--border);
   display: inline-flex;
@@ -137,8 +144,8 @@ button:hover {
 
 img {
   display: block;
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 180px;
   border-radius: 6px;
 }
 
@@ -151,36 +158,37 @@ img {
 
 .secondary-btn:hover {
   background: #e2e8f0;
-  color: var(--text-main);
-  box-shadow: none;
   transform: translateY(-1px);
 }
 
-/* Workflow Architecture Styles */
+/* WORKFLOW CARD STYLES */
 .workflow-card {
-  padding: 24px 28px;
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .workflow-card h3 {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--text-main);
-  margin-bottom: 20px;
+  letter-spacing: 0.75px;
+  color: var(--primary);
+  margin-bottom: 24px;
   text-align: left;
 }
 
 .steps-container {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
 }
 
 .step-item {
   display: flex;
   align-items: flex-start;
-  gap: 14px;
+  gap: 16px;
   text-align: left;
 }
 
@@ -189,8 +197,8 @@ img {
   color: var(--primary);
   font-size: 12px;
   font-weight: 700;
-  width: 24px;
-  height: 24px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -200,16 +208,16 @@ img {
 }
 
 .step-content h4 {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--text-main);
-  margin-bottom: 3px;
+  margin-bottom: 4px;
 }
 
 .step-content p {
   font-size: 13px;
   color: var(--text-muted);
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 .hidden {
@@ -228,7 +236,7 @@ img {
 }
 
 /* ==========================================================================
-   BACKGROUND VIDEO & GLASSMORPHISM UPGRADES
+   SHARP VIDEO ARCHITECTURE & LITE GLASS LOOK
    ========================================================================== */
 
 #bg-video {
@@ -251,15 +259,23 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(248, 250, 252, 0.75);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(243, 244, 246, 0.45); /* High transparency layer */
+  backdrop-filter: blur(2px); /* REDUCED BLUR - MAKES VIDEO CRISP */
+  -webkit-backdrop-filter: blur(2px);
   z-index: -1;
 }
 
 .qr-card,
 .workflow-card {
-  backdrop-filter: blur(16px);
-  background: rgba(255, 255, 255, 0.92) !important;
-  box-shadow: 0 30px 60px -15px rgba(15, 23, 42, 0.08) !important;
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.94) !important;
+  box-shadow: 0 20px 50px -12px rgba(15, 23, 42, 0.08) !important;
+}
+
+/* RESPONSIVE FALLBACK: Drops back to stack mode on narrow mobile phones */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+    max-width: 440px;
+  }
 }
