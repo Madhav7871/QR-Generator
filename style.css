@@ -6,7 +6,7 @@
   --text-main: #0f172a;
   --text-muted: #64748b;
   --border: #e2e8f0;
-  --radius: 16px;
+  --radius: 20px;
 }
 
 * {
@@ -22,34 +22,23 @@ body {
   align-items: center;
   min-height: 100vh;
   padding: 20px;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
-/* LANDSCAPE GRID CONTAINER */
 .app-container {
   width: 100%;
-  max-width: 940px; /* Expanded for side-by-side view */
+  max-width: 460px; /* Centered compact profile */
   display: flex;
-  flex-direction: row; /* Forces Landscape Layout */
-  gap: 24px;
-  align-items: stretch; /* Makes both cards equal height */
   justify-content: center;
-}
-
-.qr-card,
-.workflow-card {
-  flex: 1; /* Forces equal split sizing */
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  transition: transform 0.3s ease;
 }
 
 .qr-card {
-  padding: 36px 30px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px 32px;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  width: 100%;
 }
 
 .logo-area {
@@ -82,7 +71,7 @@ h2 {
 }
 
 .input-group {
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 input {
@@ -102,6 +91,58 @@ input:focus {
   border-color: var(--primary);
   box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
 }
+
+/* ==========================================================================
+   INTEGRATED WORKFLOW LAYOUT
+   ========================================================================== */
+
+.compact-workflow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 0 4px;
+  gap: 8px;
+}
+
+.workflow-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.step-badge {
+  background: #eeebff;
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 700;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.step-text {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.step-line {
+  height: 1px;
+  background: var(--border);
+  flex: 0.5;
+  margin-top: -20px; /* Aligns line horizontally with badges */
+}
+
+/* ==========================================================================
+   INTERACTION BUTTONS & DISPLAY
+   ========================================================================== */
 
 button {
   width: 100%;
@@ -124,19 +165,19 @@ button:hover {
 }
 
 .qr-box {
-  margin-top: 20px;
-  padding-top: 20px;
+  margin-top: 24px;
+  padding-top: 24px;
   border-top: 1px dashed var(--border);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .qr-wrapper {
   background: #f8fafc;
-  padding: 12px;
+  padding: 14px;
   border-radius: 12px;
   border: 1px solid var(--border);
   display: inline-flex;
@@ -161,65 +202,6 @@ img {
   transform: translateY(-1px);
 }
 
-/* WORKFLOW CARD STYLES */
-.workflow-card {
-  padding: 36px 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.workflow-card h3 {
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.75px;
-  color: var(--primary);
-  margin-bottom: 24px;
-  text-align: left;
-}
-
-.steps-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.step-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  text-align: left;
-}
-
-.step-badge {
-  background: #eeebff;
-  color: var(--primary);
-  font-size: 12px;
-  font-weight: 700;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.step-content h4 {
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text-main);
-  margin-bottom: 4px;
-}
-
-.step-content p {
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.5;
-}
-
 .hidden {
   display: none;
 }
@@ -236,7 +218,7 @@ img {
 }
 
 /* ==========================================================================
-   SHARP VIDEO ARCHITECTURE & LITE GLASS LOOK
+   CRISP BACKGROUND VIDEO ENGINE
    ========================================================================== */
 
 #bg-video {
@@ -259,23 +241,14 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(243, 244, 246, 0.45); /* High transparency layer */
-  backdrop-filter: blur(2px); /* REDUCED BLUR - MAKES VIDEO CRISP */
+  background: rgba(243, 244, 246, 0.45);
+  backdrop-filter: blur(2px); /* Kept at a sharp 2px for crisp clarity */
   -webkit-backdrop-filter: blur(2px);
   z-index: -1;
 }
 
-.qr-card,
-.workflow-card {
+.qr-card {
   backdrop-filter: blur(8px);
-  background: rgba(255, 255, 255, 0.94) !important;
-  box-shadow: 0 20px 50px -12px rgba(15, 23, 42, 0.08) !important;
-}
-
-/* RESPONSIVE FALLBACK: Drops back to stack mode on narrow mobile phones */
-@media (max-width: 768px) {
-  .app-container {
-    flex-direction: column;
-    max-width: 440px;
-  }
+  background: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 30px 60px -15px rgba(15, 23, 42, 0.1) !important;
 }
