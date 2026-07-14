@@ -26,6 +26,7 @@
     </video>
     <div class="video-overlay"></div>
 
+    <!-- MAIN APP WRAPPER -->
     <div class="app-container">
       <!-- Unified Master Generator Card -->
       <div class="qr-card">
@@ -65,7 +66,7 @@
           />
         </div>
 
-        <!-- INTEGRATED 1-2-3 WORKFLOW STEPPER -->
+        <!-- Integrated 1-2-3 Workflow Stepper -->
         <div class="compact-workflow">
           <div class="workflow-step">
             <div class="step-badge">1</div>
@@ -85,13 +86,15 @@
 
         <button id="generate-btn">Generate QR Code</button>
 
+        <!-- Dynamic Result Area -->
         <div id="qr-box" class="qr-box hidden">
           <div class="qr-wrapper">
             <img src="" id="qr-image" alt="Generated QR Code" />
           </div>
-          <button id="download-btn" class="secondary-btn">
-            Download QR Code
-          </button>
+          <div class="action-buttons">
+            <button id="download-btn" class="secondary-btn">Download QR</button>
+            <button id="copy-btn" class="secondary-btn">Copy Image</button>
+          </div>
         </div>
       </div>
     </div>
