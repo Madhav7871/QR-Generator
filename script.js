@@ -7,20 +7,25 @@ generateBtn.addEventListener("click", () => {
   const textValue = qrInput.value.trim();
 
   if (!textValue) {
-    alert("Please type a link or text first!");
+    qrInput.style.borderColor = "#ef4444";
+    setTimeout(() => (qrInput.style.borderColor = ""), 2000);
+    alert("Please enter a link or text first!");
     return;
   }
 
-  generateBtn.innerText = "Generating...";
+  // Visual loading state
+  generateBtn.innerText = "Generating QR Code...";
+  generateBtn.style.opacity = "0.7";
+  generateBtn.style.pointerEvents = "none";
 
-  // Requesting the QR image from the public API
   const apiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(textValue)}`;
 
   qrImage.src = apiUrl;
 
-  // Reveal the graphic panel container only when it finishes downloading completely
   qrImage.onload = () => {
     qrBox.classList.remove("hidden");
     generateBtn.innerText = "Generate QR Code";
+    generateBtn.style.opacity = "1";
+    generateBtn.style.pointerEvents = "auto";
   };
 });
