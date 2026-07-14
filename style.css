@@ -25,20 +25,27 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 20px;
+  padding: 40px 20px;
 }
 
 .app-container {
   width: 100%;
-  max-width: 440px;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.qr-card,
+.workflow-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.04);
 }
 
 .qr-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
   padding: 36px 30px;
-  border-radius: var(--radius);
-  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.06);
   text-align: center;
 }
 
@@ -93,10 +100,6 @@ input:focus {
   box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
 }
 
-input::placeholder {
-  color: #94a3b8;
-}
-
 button {
   width: 100%;
   background: var(--primary);
@@ -117,16 +120,14 @@ button:hover {
   box-shadow: 0 6px 20px rgba(79, 70, 229, 0.2);
 }
 
-button:active {
-  transform: translateY(0);
-}
-
 .qr-box {
   margin-top: 28px;
   padding-top: 28px;
   border-top: 1px dashed var(--border);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
   animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -143,6 +144,76 @@ img {
   width: 200px;
   height: 200px;
   border-radius: 6px;
+}
+
+.secondary-btn {
+  background: #f1f5f9;
+  color: var(--text-main);
+  box-shadow: none;
+  border: 1px solid var(--border);
+}
+
+.secondary-btn:hover {
+  background: #e2e8f0;
+  color: var(--text-main);
+  box-shadow: none;
+  transform: translateY(-1px);
+}
+
+/* Workflow Architecture Styles */
+.workflow-card {
+  padding: 24px 28px;
+}
+
+.workflow-card h3 {
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-main);
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.steps-container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  text-align: left;
+}
+
+.step-badge {
+  background: #eeebff;
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 700;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.step-content h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 3px;
+}
+
+.step-content p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.4;
 }
 
 .hidden {
